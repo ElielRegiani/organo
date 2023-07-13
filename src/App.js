@@ -46,7 +46,6 @@ function App() {
   const [colaborators, setColaborators] = useState([])
 
   const whenNewColaboratorRegister = (colaborator) => {
-    console.log(colaborator)
     setColaborators([...colaborators, colaborator] )
   }
 
@@ -54,7 +53,7 @@ function App() {
     <div className="App">
       <Banner />
       <Form times={times.map(time => time.name)} whenColaboratorRegister={colaborator => whenNewColaboratorRegister(colaborator)}/>
-      {times.map(time => <Time key={time.name} name={time.name} primaryColor={time.primaryColor} secundaryColor={time.secundaryColor}/>)}
+      {times.map(time => <Time key={time.name} name={time.name} primaryColor={time.primaryColor} secundaryColor={time.secundaryColor} colaborators={colaborators.filter(colaborator => colaborator.time == time.name)}/>)}
     </div>
   );
 }
